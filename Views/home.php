@@ -84,7 +84,9 @@
     elseif (isset($_POST["user_id"]) && ($_POST["user"] == "shfaqHP") && (!empty($_POST["user_id"]))){
         $currentDate = date("Y-m-d");
         list($year,$month,$day) = explode("-",$currentDate);
-        if (!getUser("../Files/user.csv",$_POST["user_id"])){echo "Useri nuk ekziston!";die();};?>
+        if (!getUser("../Files/user.csv",$_POST["user_id"])){echo "Useri nuk ekziston!";
+            echo "<br><a href='Views.php'><input type='button' value='Faqja kryesore' style='margin-top: 5px' class='btn btn-success'></a>";
+            die();};?>
        <form action="shfaqOrePune.php" method="post">
             <tr>
                 <td>Zgjidhni periudhen!</td>
