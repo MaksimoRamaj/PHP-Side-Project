@@ -48,6 +48,70 @@ function pagesaPerUser(string $filepath,int $id,string $wd,string $fd,string $od
         updateCsv($filepath,$newData);
     }
 }
+//fshi nje rrjesht nga csv
+function fshiNgaCsv(string $filepath,$user_id,array $firstLineCsv){
+    if(!($file = fopen($filepath,"r"))){
+        echo "Fshirja nga csv file e pamundur!";
+        die();
+    }
+    $newData = [];
+    fgetcsv($file,1000,",");
+    while (($data = fgetcsv($file,1000,","))!=false){
+        if ($data[0] == $user_id){
+            continue;
+        }else{
+            $newData[] = $data;
+        }
+    }
+    if (!fclose($file)){
+        echo "File ne funksionin fshi nga csv nuk u mbyll\n";
+        die();
+    }
+    $file = fopen($filepath,"w");
+    if (!$file){echo "File nuk u hap!";die();}
+    if (!fputcsv($file,$firstLineCsv,",")){echo "Modifikimi rreshti pare deshtoi!\n";
+        //i bej backup te dhenave ne nje file
+        $backup = fopen("../Files/backup.csv","w");
+        foreach ($newData as $row){
+            if (!fputcsv($file,$row,",")){
+                echo "Rreshti ne backup nuk shtua!";
+                die();
+            };
+        }
+        die();};
+    foreach ($newData as $row){
+        if (!fputcsv($file,$row,",")){
+            echo "Rreshti ne file nuk u shtua!";
+            die();
+        };
+    }
+    echo "<br>Fshirja e tarifave per ore pune per user me id ${user_id} u krye!";
+}
+
+function fshiUserCsv(string $filepath,$user_id,array $firstLineCsv){
+    $file = fopen($filepath,"r");
+    if (!$file){
+        echo "File nuk u hap error: funksioni fshiUser!";
+        die();
+    }
+    $newData = [];
+    fgetcsv($file,1000,",");
+    while (($data = fgetcsv($file,1000,","))!=false){
+        if ($data[0]==$user_id){
+            continue;
+        }else{
+            $newData[] = $data;
+        }
+    }
+    fclose($file);
+    $file = fopen($filepath,"w");
+    fputcsv($file,$firstLineCsv,",");
+    foreach ($newData as $row){
+        fputcsv($file,$row,",");
+    }
+    fclose($file);
+    echo "<br>User me id:${user_id} u fshi!\n";
+}
 
 function updateCsv(string $filepath,array $array){
     $file = fopen($filepath,"r");

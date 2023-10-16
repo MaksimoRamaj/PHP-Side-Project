@@ -6,20 +6,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>User</title>
-    <script>
-        function disableOtherInputs(inputField) {
-            // Get all input fields of type "text"
-            var inputFields = document.querySelectorAll('input[type="text"]');
-
-            // Loop through the input fields
-            for (var i = 0; i < inputFields.length; i++) {
-                // Check if the current input field is not the one being typed in
-                if (inputFields[i] !== inputField) {
-                    inputFields[i].disabled = true;
-                }
-            }
-        }
-    </script>
     <link rel="stylesheet" href="Views.css">
 </head>
 <body>
@@ -64,9 +50,9 @@
                 <td>id: <input type="number" value="<?php echo $_POST["user_id"];?>" name="prop0"></td>
                 <td>User: <input type="text" name="prop1"></td>
                 <td>Username: <input type="text" name="prop2"></td>
-                <td>Pagesa per Working/H: <input type="number" name="prop3" oninput="disableOtherInputs(this)"></td>
-                <td>Festive/H: <input type="number" name="prop4" oninput="disableOtherInputs(this)"></td>
-                <td>Off/H: <input type="number" name="prop5" oninput="disableOtherInputs(this)"></td>
+                <td>Pagesa per Working/H: <input type="number" name="prop3" ></td>
+                <td>Festive/H: <input type="number" name="prop4" "></td>
+                <td>Off/H: <input type="number" name="prop5" ></td>
                 <td>Extra/H: <input type="number" name="prop6"></td>
                 <td><input type="submit" value="submit"></td>
             </form>
@@ -107,17 +93,17 @@
                 <td>
                     From:
                 </td>
-                <td>Dita:<input type="number" name="dita"></td>
-                <td>Muaji:<input type="number" name="muaji"></td>
-                <td>Viti:<input type="number" name="viti"></td>
+                <td>Dita:<input type="number" name="dita" required></td>
+                <td>Muaji:<input type="number" name="muaji" required></td>
+                <td>Viti:<input type="number" name="viti" required></td>
             </tr>
            <tr>
                <td>
                    To:
                </td>
-               <td>Dita:<input type="number" name="dita_f" value="<?php echo $day ?>"></td>
-               <td>Muaji:<input type="number" name="muaji_f" value="<?php echo $month ?>"></td>
-               <td>Viti:<input type="number" name="viti_f" value="<?php echo $year ?>"></td>
+               <td>Dita:<input type="number" name="dita_f" value="<?php echo $day ?>" required></td>
+               <td>Muaji:<input type="number" name="muaji_f" value="<?php echo $month ?>" required></td>
+               <td>Viti:<input type="number" name="viti_f" value="<?php echo $year ?>" required></td>
            </tr>
            <tr>
                <td>
@@ -125,7 +111,22 @@
                </td>
            </tr>
        </form>
-    <?php }elseif($_POST["user"] == "shfaqUser"){
+    <?php }elseif(($_POST["user"] == "fshiUser") && (!empty($_POST["user_id"]))){
+        $user_id = $_POST["user_id"];
+        //fshi filen e oreve te punes
+        if (file_exists("../Files/${user_id}.csv")) {
+            if (unlink("../Files/${user_id}.csv")) {
+                echo "Te dhenat e oreve te punes u fshine!\n";
+            } else {
+                echo "File e oreve te punes ekziston, por nuk mund te fshihej!\n";
+            }
+        }
+        //Fshi nga file rreshtin ku ruhet tarifa per ore pune
+        fshiNgaCsv("../Files/feePerHourInAD.csv",$user_id,array("user_id","working_day","festive_day","off_day","extra"));
+        //Fshi userin
+        fshiUserCsv("../Files/user.csv",$user_id,array("id","emri","username"));
+    }
+    elseif($_POST["user"] == "shfaqUser"){
         $file = fopen("..\Files\user.csv","r");
         if (!$file){echo "File nuk u hap!";}else{
             fgetcsv($file,1000,",");

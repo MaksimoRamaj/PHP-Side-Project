@@ -52,6 +52,13 @@
                     </tr>
                     <tr>
                         <td>
+                            <label>
+                                <input type="radio" name="user" value="fshiUser">Fshi user
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             <input type="submit" value="submit">
                         </td>
                     </tr>

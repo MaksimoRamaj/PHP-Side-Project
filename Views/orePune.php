@@ -17,7 +17,7 @@
         if (!($file = fopen($fileName,"a"))){echo "File nuk u hap";die();};
         fclose($file);
     }else{
-        if (!($file = fopen($fileName,"w"))){echo "File nuk u hap";die();};
+        if (!($file = fopen($fileName,"x"))){echo "File nuk u hap";die();};
         $array = array("dita_id","user_id","working_day","festive_day","off_day","extra","dita","muaji","viti");
         fputcsv($file,$array,",");
         fclose($file);

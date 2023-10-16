@@ -20,6 +20,9 @@
     $muaji_f = $_POST["muaji_f"];
     $viti_f = $_POST["viti_f"];
 
+    if (!file_exists("../Files/${user_id}.csv")){echo "Useri nuk ka asnje ore pune!";
+        echo "<br><a href='Views.php'><input type='button' value='Faqja kryesore' style='margin-top: 5px'></a>";
+        die();};
 
     if(!$file = fopen("../Files/${user_id}.csv","r")){echo "File nuk nuk mund te lexohej!";die();};
 
