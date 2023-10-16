@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>User</title>
     <link rel="stylesheet" href="Views.css">
+    <link rel="stylesheet" href="../bootstrap_css/bootstrap.css">
 </head>
 <body>
 
@@ -54,7 +55,7 @@
                 <td>Festive/H: <input type="number" name="prop4" "></td>
                 <td>Off/H: <input type="number" name="prop5" ></td>
                 <td>Extra/H: <input type="number" name="prop6"></td>
-                <td><input type="submit" value="submit"></td>
+                <td><input type="submit" value="submit" class="btn btn-success"></td>
             </form>
         </tr>
     <?php }}
@@ -76,7 +77,7 @@
                     <td>Viti: <input type="number" name="viti" value="<?php echo $year ?>"></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="submit"></td>
+                    <td><input type="submit" value="submit" class="btn btn-success"></td>
                 </tr>
             </form>
     <?php }
@@ -107,7 +108,7 @@
            </tr>
            <tr>
                <td>
-                   <input type="submit" value="submit">
+                   <input type="submit" value="submit" class="btn btn-success">
                </td>
            </tr>
        </form>
@@ -144,7 +145,7 @@
     }?>
     </tbody>
 </table>
-<a href="Views.php"><input type="button" value="Faqja kryesore" style="margin-top: 5px"></a>
+<a href="Views.php"><input type="button" value="Faqja kryesore" style="margin-top: 5px" class="btn btn-success"></a>
 </body>
 </html>
 

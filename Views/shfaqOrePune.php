@@ -1,10 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../bootstrap_css/bootstrap.css">
+    <link rel="stylesheet" href="Views.css">
     <title>Shfaq ore pune</title>
 </head>
 <body>
@@ -21,7 +23,7 @@
     $viti_f = $_POST["viti_f"];
 
     if (!file_exists("../Files/${user_id}.csv")){echo "Useri nuk ka asnje ore pune!";
-        echo "<br><a href='Views.php'><input type='button' value='Faqja kryesore' style='margin-top: 5px'></a>";
+        echo "<br><a href='Views.php'><input  type='button' value='Faqja kryesore' class='btn btn-success' style='margin-top: 5px'></a>";
         die();};
 
     if(!$file = fopen("../Files/${user_id}.csv","r")){echo "File nuk nuk mund te lexohej!";die();};
@@ -40,14 +42,18 @@
     <tr><th>dita_id</th><th>user_id</th><th>Ore Pune <br> Dite Normale</th><th>Ore Pune <br>Dite Feste</th><th>Ore Pune <br>Dite Pushimi</th><th>Ore Pune <br> Shtese</th><th>Data</th></tr>
     <?php while (($row = fgetcsv($file,1000,","))!==false){
             $rowDate = new DateTime("${row[8]}-${row[7]}-${row[6]}");
-            if (($rowDate>=$dateFillimi AND $rowDate<=$dateFundit)){
-                ?><tr>
-                <?php foreach ($row as $col){?>
-                    <td><?php echo $col ?></td>
-            <?php } ?> </tr> <?php } ?>
-       <?php }
+            if (($rowDate>=$dateFillimi AND $rowDate<=$dateFundit)){?>
+                <tr><?php for ($i=0;$i<2;$i++){?>
+                    <td><?php echo $row[$i] ?></td><?php }
+                    for ($i=2;$i<6;$i++){?>
+                    <td><?php echo $row[$i]." H"; }?></td>
+                    <td><?php  for ($i=6;$i<8;$i++){ ?>
+                        <?php echo $row[$i]."/" ?>
+                        <?php  } echo $row[8];?></td>
+                        </tr> <?php } ?>
+            <?php }
     ?>
 </table>
-<a href='Views.php'><input type='button' value='Faqja kryesore' style='margin-top: 5px'></a>
+<a href='Views.php'><input type='button' value='Faqja kryesore' class="btn btn-success" style='margin-top: 5px'></a>
 </body>
 </html>

@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../bootstrap_css/bootstrap.css">
     <title>Oret e punes</title>
 </head>
 <body>
@@ -38,6 +39,6 @@
 
     unset($_POST);
 ?>
-<a href="Views.php"><input type="button" value="Faqja kryesore" style="margin-top: 5px"></a>
+<a href="Views.php"><input type="button" value="Faqja kryesore" class="btn btn-success" style="margin-top: 5px"></a>
 </body>
 </html>

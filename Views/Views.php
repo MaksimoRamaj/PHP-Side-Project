@@ -1,11 +1,13 @@
-<!doctype html>
-<html lang="en">
+<!doctype html >
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>User</title>
+    <link rel="stylesheet" href="Views.css">
+    <link rel="stylesheet" href="../bootstrap_css/bootstrap.css">
 </head>
 <body>
     <table style="border: 1px">
@@ -19,47 +21,47 @@
                     </tr>
                     <tr><td>
                             <label>
-                                <input type="radio" name="user" value="shtoUser"> Shto User
+                                <input type="radio" name="user" class="form-check-input" value="shtoUser"> Shto User
                             </label>
                         </td>
                     </tr>
                     <tr><td>
                             <label>
-                                <input type="radio" name="user" value="shfaqUser"> Shfaq userat
+                                <input type="radio" name="user" class="form-check-input" value="shfaqUser"> Shfaq userat
                             </label>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>
-                                <input type="radio" name="user" value="kerkoUser"> Kerko User
+                                <input type="radio" name="user" class="form-check-input" value="kerkoUser"> Kerko User
                             </label>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>
-                                <input type="radio" name="user" value="shtoOrePune"> Shto ore pune
+                                <input type="radio" name="user" class="form-check-input" value="shtoOrePune"> Shto ore pune
                             </label>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>
-                                <input type="radio" name="user" value="shfaqHP"> Shfaq oret e punes
+                                <input type="radio" name="user" class="form-check-input" value="shfaqHP"> Shfaq oret e punes
                             </label>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>
-                                <input type="radio" name="user" value="fshiUser">Fshi user
+                                <input type="radio" name="user" class="form-check-input" value="fshiUser">Fshi user
                             </label>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input type="submit" value="submit">
+                            <input type="submit" value="submit" class="btn btn-success">
                         </td>
                     </tr>
                 </form>
