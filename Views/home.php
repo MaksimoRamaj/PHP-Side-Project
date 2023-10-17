@@ -81,6 +81,40 @@
                 </tr>
             </form>
     <?php }
+    elseif (($_POST["user"] == "shfaqPagen") && (!empty($_POST["user_id"]))){
+        $currentDate = date("Y-m-d");
+        list($year,$month,$day) = explode("-",$currentDate);
+        if (!getUser("../Files/user.csv",$_POST["user_id"])){echo "Useri nuk ekziston!";
+            echo "<br><a href='Views.php'><input type='button' value='Faqja kryesore' style='margin-top: 5px' class='btn btn-success'></a>";
+            die();};?>
+        <form action="shfaqPagen.php" method="post">
+            <tr>
+                <td>Zgjidhni periudhen!</td>
+                <td>User id: <input type="number" name="user_id" value="<?php echo $_POST["user_id"] ?>" ></td>
+            </tr>
+            <tr>
+                <td>
+                    From:
+                </td>
+                <td>Dita:<input type="number" name="dita" required></td>
+                <td>Muaji:<input type="number" name="muaji" required></td>
+                <td>Viti:<input type="number" name="viti" required></td>
+            </tr>
+            <tr>
+                <td>
+                    To:
+                </td>
+                <td>Dita:<input type="number" name="dita_f" value="<?php echo $day ?>" required></td>
+                <td>Muaji:<input type="number" name="muaji_f" value="<?php echo $month ?>" required></td>
+                <td>Viti:<input type="number" name="viti_f" value="<?php echo $year ?>" required></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="submit" class="btn btn-success">
+                </td>
+            </tr>
+        </form>
+    <?php }
     elseif (isset($_POST["user_id"]) && ($_POST["user"] == "shfaqHP") && (!empty($_POST["user_id"]))){
         $currentDate = date("Y-m-d");
         list($year,$month,$day) = explode("-",$currentDate);

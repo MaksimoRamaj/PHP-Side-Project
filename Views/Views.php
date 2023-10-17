@@ -55,6 +55,13 @@
                     <tr>
                         <td>
                             <label>
+                                <input type="radio" name="user" class="form-check-input" value="shfaqPagen"> Shfaq pagesen
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>
                                 <input type="radio" name="user" class="form-check-input" value="fshiUser">Fshi user
                             </label>
                         </td>
@@ -68,7 +75,6 @@
         </tbody>
     </table>
 </body>
-
 </html>
 
 
